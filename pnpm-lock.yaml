@@ -10,22 +10,22 @@ importers:
     dependencies:
       '@langchain/anthropic':
         specifier: ^0.1.21
-        version: 0.1.21(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+        version: 0.1.21(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       '@langchain/community':
-        specifier: ^0.2.3
-        version: 0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(lodash@4.17.21)(openai@4.47.1)
+        specifier: ^0.2.4
+        version: 0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(lodash@4.17.21)(openai@4.47.1)
       '@langchain/core':
-        specifier: ^0.2.1
-        version: 0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+        specifier: ^0.2.5
+        version: 0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       '@langchain/langgraph':
         specifier: ^0.0.21
-        version: 0.0.21(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+        version: 0.0.21(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       '@langchain/mistralai':
-        specifier: ^0.0.22
-        version: 0.0.22(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+        specifier: ^0.0.23
+        version: 0.0.23(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       '@langchain/openai':
-        specifier: ^0.0.33
-        version: 0.0.33(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))
+        specifier: ^0.1.0
+        version: 0.1.0(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))
       '@nestjs/common':
         specifier: ^10.3.8
         version: 10.3.8(reflect-metadata@0.2.2)(rxjs@7.8.1)
@@ -39,8 +39,8 @@ importers:
         specifier: ^10.3.8
         version: 10.3.8(@nestjs/common@10.3.8(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.3.8)
       langchain:
-        specifier: ^0.2.2
-        version: 0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1)
+        specifier: ^0.2.4
+        version: 0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1)
       newsapi:
         specifier: ^2.4.1
         version: 2.4.1
@@ -73,17 +73,17 @@ importers:
         specifier: ^29.5.12
         version: 29.5.12
       '@types/node':
-        specifier: ^20.12.12
-        version: 20.12.12
+        specifier: ^20.13.0
+        version: 20.13.0
       '@types/supertest':
         specifier: ^6.0.2
         version: 6.0.2
       '@typescript-eslint/eslint-plugin':
-        specifier: ^7.10.0
-        version: 7.10.0(@typescript-eslint/parser@7.10.0(eslint@9.3.0)(typescript@5.4.5))(eslint@9.3.0)(typescript@5.4.5)
+        specifier: ^7.11.0
+        version: 7.11.0(@typescript-eslint/parser@7.11.0(eslint@9.3.0)(typescript@5.4.5))(eslint@9.3.0)(typescript@5.4.5)
       '@typescript-eslint/parser':
-        specifier: ^7.10.0
-        version: 7.10.0(eslint@9.3.0)(typescript@5.4.5)
+        specifier: ^7.11.0
+        version: 7.11.0(eslint@9.3.0)(typescript@5.4.5)
       eslint:
         specifier: ^9.3.0
         version: 9.3.0
@@ -95,7 +95,7 @@ importers:
         version: 5.1.3(@types/eslint@8.56.10)(eslint-config-prettier@9.1.0(eslint@9.3.0))(eslint@9.3.0)(prettier@3.2.5)
       jest:
         specifier: ^29.7.0
-        version: 29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5))
+        version: 29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5))
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -106,14 +106,14 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0
       ts-jest:
-        specifier: ^29.1.3
-        version: 29.1.3(@babel/core@7.24.6)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.24.6))(jest@29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5)))(typescript@5.4.5)
+        specifier: ^29.1.4
+        version: 29.1.4(@babel/core@7.24.6)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.24.6))(jest@29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5)))(typescript@5.4.5)
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.1(typescript@5.4.5)(webpack@5.90.1)
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.12.12)(typescript@5.4.5)
+        version: 10.9.2(@types/node@20.13.0)(typescript@5.4.5)
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -462,8 +462,8 @@ packages:
     resolution: {integrity: sha512-7L5UDhO93UYfBwdaGxIqc5ZGSQ4wgMyYdENflLYhA9Aeho+BSHd0Krqh6zEHNGy4p+OrCElyDy58G8yiDEpxvw==}
     engines: {node: '>=18'}
 
-  '@langchain/community@0.2.3':
-    resolution: {integrity: sha512-8ynw+ck4mfd7v4oYV1MP9rau2dLfdubTSN3e/1AhrKstICejOT2iYv3+Y4J9H/niwWBd5VqUmJUhTmYUZK3WBg==}
+  '@langchain/community@0.2.4':
+    resolution: {integrity: sha512-rwrPNQLyIe84TPqPYbYOfDA4G/ba1rdj7OtZg63dQmxIvNDOmUCh4xIQac2iuRUnM3o4Ben0Faa9qz+V5oPgIA==}
     engines: {node: '>=18'}
     peerDependencies:
       '@aws-crypto/sha256-js': ^5.0.0
@@ -484,11 +484,11 @@ packages:
       '@datastax/astra-db-ts': ^1.0.0
       '@elastic/elasticsearch': ^8.4.0
       '@getmetal/metal-sdk': '*'
-      '@getzep/zep-cloud': ~1.0.0
+      '@getzep/zep-cloud': '*'
       '@getzep/zep-js': ^0.9.0
       '@gomomento/sdk': ^1.51.1
       '@gomomento/sdk-core': ^1.51.1
-      '@google-ai/generativelanguage': ^2.5.0
+      '@google-ai/generativelanguage': '*'
       '@google-cloud/storage': ^6.10.1 || ^7.7.0
       '@gradientai/nodejs-sdk': ^1.2.0
       '@huggingface/inference': ^2.6.4
@@ -517,7 +517,7 @@ packages:
       '@tensorflow/tfjs-core': '*'
       '@upstash/ratelimit': ^1.1.3
       '@upstash/redis': ^1.20.6
-      '@upstash/vector': ^1.0.7
+      '@upstash/vector': ^1.1.1
       '@vercel/kv': ^0.2.3
       '@vercel/postgres': ^0.5.0
       '@writerai/writer-sdk': ^0.40.2
@@ -544,7 +544,7 @@ packages:
       epub2: ^3.0.1
       faiss-node: ^0.5.1
       firebase-admin: ^11.9.0 || ^12.0.0
-      google-auth-library: ^9.10.0
+      google-auth-library: '*'
       googleapis: ^126.0.1
       hnswlib-node: ^3.0.0
       html-to-text: ^9.0.5
@@ -825,8 +825,8 @@ packages:
       youtubei.js:
         optional: true
 
-  '@langchain/core@0.2.1':
-    resolution: {integrity: sha512-VRgdV8aaKfhjC446fqsvDriTe0VPIHW+bl8cTefRwGKRuW9Tynw6FvS+69UOywp3Ix9u7GBvCIATBrdhmFAQHA==}
+  '@langchain/core@0.2.5':
+    resolution: {integrity: sha512-tMaKRFVewFn8crQwlbXGjT7hlMdX1yXHap1ebBx7Bb2C3C9AeZ+sXbX11m27yamypNlVVegwUcisw3YCaDkZJA==}
     engines: {node: '>=18'}
 
   '@langchain/langgraph@0.0.21':
@@ -838,12 +838,16 @@ packages:
       better-sqlite3:
         optional: true
 
-  '@langchain/mistralai@0.0.22':
-    resolution: {integrity: sha512-cZ+HBz32Gq2zjkXcDs5hDnr8W0QxlRXhWAXu9zepwzLNe3aXxAD/lhz9l654o2fo89bqnuhtYgbGx8ZVYcDvCw==}
+  '@langchain/mistralai@0.0.23':
+    resolution: {integrity: sha512-0huhT3KXqrD1u20e2NWpBlprBoNidw4Q4hjBI9DySCb1Gx4wSIV6y8kswsWRfM1VDBZvJcCVLeVuOSAyShoFug==}
     engines: {node: '>=18'}
 
   '@langchain/openai@0.0.33':
     resolution: {integrity: sha512-hTBo9y9bHtFvMT5ySBW7TrmKhLSA91iNahigeqAFBVrLmBDz+6rzzLFc1mpq6JEAR3fZKdaUXqso3nB23jIpTw==}
+    engines: {node: '>=18'}
+
+  '@langchain/openai@0.1.0':
+    resolution: {integrity: sha512-jm7U9oxXQ2N03q3+S9CzEAmMJaL2FqdAi4bOYdEBS0aAWAU29so35ZOs5i2uu4W29mK9oV9XS/4A5ggR1gOLEA==}
     engines: {node: '>=18'}
 
   '@langchain/textsplitters@0.0.2':
@@ -858,8 +862,8 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
-  '@mistralai/mistralai@0.1.3':
-    resolution: {integrity: sha512-WUHxC2xdeqX9PTXJEqdiNY54vT2ir72WSJrZTTBKRnkfhX6zIfCYA24faRlWjUB5WTpn+wfdGsTMl3ArijlXFA==}
+  '@mistralai/mistralai@0.4.0':
+    resolution: {integrity: sha512-KmFzNro1RKxIFh19J3osmUQhucefBBauMXN5fa9doG6dT9OHR/moBvvn+riVlR7c0AVfuxO8Dfa03AyLYYzbyg==}
 
   '@nestjs/cli@10.3.2':
     resolution: {integrity: sha512-aWmD1GLluWrbuC4a1Iz/XBk5p74Uj6nIVZj6Ov03JbTfgtWqGFLtXuMetvzMiHxfrHehx/myt2iKAPRhKdZvTg==}
@@ -1049,8 +1053,8 @@ packages:
   '@types/node@18.19.33':
     resolution: {integrity: sha512-NR9+KrpSajr2qBVp/Yt5TU/rp+b5Mayi3+OlMlcg2cVCfRmcG5PWZ7S4+MG9PZ5gWBoc9Pd0BKSRViuBCRPu0A==}
 
-  '@types/node@20.12.12':
-    resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
+  '@types/node@20.13.0':
+    resolution: {integrity: sha512-FM6AOb3khNkNIXPnHFDYaHerSv8uN22C91z098AnGccVu+Pcdhi+pNUFDi0iLmPIsVE0JBD0KVS7mzUYt4nRzQ==}
 
   '@types/qs@6.9.15':
     resolution: {integrity: sha512-uXHQKES6DQKKCLh441Xv/dwxOq1TVS3JPUMlEqoEglvlhR6Mxnlew/Xq/LRVHpLyk7iK3zODe1qYHIMltO7XGg==}
@@ -1085,8 +1089,8 @@ packages:
   '@types/yargs@17.0.32':
     resolution: {integrity: sha512-xQ67Yc/laOG5uMfX/093MRlGGCIBzZMarVa+gfNKJxWAIgykYpVGkBdbqEzGDDfCrVUj6Hiff4mTZ5BA6TmAog==}
 
-  '@typescript-eslint/eslint-plugin@7.10.0':
-    resolution: {integrity: sha512-PzCr+a/KAef5ZawX7nbyNwBDtM1HdLIT53aSA2DDlxmxMngZ43O8SIePOeX8H5S+FHXeI6t97mTt/dDdzY4Fyw==}
+  '@typescript-eslint/eslint-plugin@7.11.0':
+    resolution: {integrity: sha512-P+qEahbgeHW4JQ/87FuItjBj8O3MYv5gELDzr8QaQ7fsll1gSMTYb6j87MYyxwf3DtD7uGFB9ShwgmCJB5KmaQ==}
     engines: {node: ^18.18.0 || >=20.0.0}
     peerDependencies:
       '@typescript-eslint/parser': ^7.0.0
@@ -1096,8 +1100,8 @@ packages:
       typescript:
         optional: true
 
-  '@typescript-eslint/parser@7.10.0':
-    resolution: {integrity: sha512-2EjZMA0LUW5V5tGQiaa2Gys+nKdfrn2xiTIBLR4fxmPmVSvgPcKNW+AE/ln9k0A4zDUti0J/GZXMDupQoI+e1w==}
+  '@typescript-eslint/parser@7.11.0':
+    resolution: {integrity: sha512-yimw99teuaXVWsBcPO1Ais02kwJ1jmNA1KxE7ng0aT7ndr1pT1wqj0OJnsYVGKKlc4QJai86l/025L6z8CljOg==}
     engines: {node: ^18.18.0 || >=20.0.0}
     peerDependencies:
       eslint: ^8.56.0
@@ -1106,12 +1110,12 @@ packages:
       typescript:
         optional: true
 
-  '@typescript-eslint/scope-manager@7.10.0':
-    resolution: {integrity: sha512-7L01/K8W/VGl7noe2mgH0K7BE29Sq6KAbVmxurj8GGaPDZXPr8EEQ2seOeAS+mEV9DnzxBQB6ax6qQQ5C6P4xg==}
+  '@typescript-eslint/scope-manager@7.11.0':
+    resolution: {integrity: sha512-27tGdVEiutD4POirLZX4YzT180vevUURJl4wJGmm6TrQoiYwuxTIY98PBp6L2oN+JQxzE0URvYlzJaBHIekXAw==}
     engines: {node: ^18.18.0 || >=20.0.0}
 
-  '@typescript-eslint/type-utils@7.10.0':
-    resolution: {integrity: sha512-D7tS4WDkJWrVkuzgm90qYw9RdgBcrWmbbRkrLA4d7Pg3w0ttVGDsvYGV19SH8gPR5L7OtcN5J1hTtyenO9xE9g==}
+  '@typescript-eslint/type-utils@7.11.0':
+    resolution: {integrity: sha512-WmppUEgYy+y1NTseNMJ6mCFxt03/7jTOy08bcg7bxJJdsM4nuhnchyBbE8vryveaJUf62noH7LodPSo5Z0WUCg==}
     engines: {node: ^18.18.0 || >=20.0.0}
     peerDependencies:
       eslint: ^8.56.0
@@ -1120,12 +1124,12 @@ packages:
       typescript:
         optional: true
 
-  '@typescript-eslint/types@7.10.0':
-    resolution: {integrity: sha512-7fNj+Ya35aNyhuqrA1E/VayQX9Elwr8NKZ4WueClR3KwJ7Xx9jcCdOrLW04h51de/+gNbyFMs+IDxh5xIwfbNg==}
+  '@typescript-eslint/types@7.11.0':
+    resolution: {integrity: sha512-MPEsDRZTyCiXkD4vd3zywDCifi7tatc4K37KqTprCvaXptP7Xlpdw0NR2hRJTetG5TxbWDB79Ys4kLmHliEo/w==}
     engines: {node: ^18.18.0 || >=20.0.0}
 
-  '@typescript-eslint/typescript-estree@7.10.0':
-    resolution: {integrity: sha512-LXFnQJjL9XIcxeVfqmNj60YhatpRLt6UhdlFwAkjNc6jSUlK8zQOl1oktAP8PlWFzPQC1jny/8Bai3/HPuvN5g==}
+  '@typescript-eslint/typescript-estree@7.11.0':
+    resolution: {integrity: sha512-cxkhZ2C/iyi3/6U9EPc5y+a6csqHItndvN/CzbNXTNrsC3/ASoYQZEt9uMaEp+xFNjasqQyszp5TumAVKKvJeQ==}
     engines: {node: ^18.18.0 || >=20.0.0}
     peerDependencies:
       typescript: '*'
@@ -1133,14 +1137,14 @@ packages:
       typescript:
         optional: true
 
-  '@typescript-eslint/utils@7.10.0':
-    resolution: {integrity: sha512-olzif1Fuo8R8m/qKkzJqT7qwy16CzPRWBvERS0uvyc+DHd8AKbO4Jb7kpAvVzMmZm8TrHnI7hvjN4I05zow+tg==}
+  '@typescript-eslint/utils@7.11.0':
+    resolution: {integrity: sha512-xlAWwPleNRHwF37AhrZurOxA1wyXowW4PqVXZVUNCLjB48CqdPJoJWkrpH2nij9Q3Lb7rtWindtoXwxjxlKKCA==}
     engines: {node: ^18.18.0 || >=20.0.0}
     peerDependencies:
       eslint: ^8.56.0
 
-  '@typescript-eslint/visitor-keys@7.10.0':
-    resolution: {integrity: sha512-9ntIVgsi6gg6FIq9xjEO4VQJvwOqA3jaBFQJ/6TK5AvEup2+cECI6Fh7QiBxmfMHXU0V0J4RyPeOU1VDNzl9cg==}
+  '@typescript-eslint/visitor-keys@7.11.0':
+    resolution: {integrity: sha512-7syYk4MzjxTEk0g/w3iqtgxnFQspDJfn6QKD36xMuuhTzjcxY7F8EmBLnALjVyaOF1/bVocu3bS/2/F7rXrveQ==}
     engines: {node: ^18.18.0 || >=20.0.0}
 
   '@webassemblyjs/ast@1.12.1':
@@ -2387,8 +2391,8 @@ packages:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
 
-  langchain@0.2.2:
-    resolution: {integrity: sha512-4tt2QuwW8AXdIL8CRkQeGOCoYYH3QbLHfQ09yD0iWLV1rwUYJ8mIYFAz/+u6CB8YNEyR/HI105s4xrxFQbWa9g==}
+  langchain@0.2.3:
+    resolution: {integrity: sha512-T9xR7zd+Nj0oXy6WoYKmZLy0DlQiDLFPGYWdOXDxy+AvqlujoPdVQgDSpdqiOHvAjezrByAoKxoHCz5XMwTP/Q==}
     engines: {node: '>=18'}
     peerDependencies:
       '@aws-sdk/client-s3': ^3.310.0
@@ -2400,7 +2404,6 @@ packages:
       '@gomomento/sdk': ^1.51.1
       '@gomomento/sdk-core': ^1.51.1
       '@gomomento/sdk-web': ^1.51.1
-      '@google-ai/generativelanguage': ^2.5.0
       '@mendable/firecrawl-js': ^0.0.13
       '@notionhq/client': ^2.2.10
       '@pinecone-database/pinecone': '*'
@@ -2461,7 +2464,161 @@ packages:
         optional: true
       '@gomomento/sdk-web':
         optional: true
-      '@google-ai/generativelanguage':
+      '@mendable/firecrawl-js':
+        optional: true
+      '@notionhq/client':
+        optional: true
+      '@pinecone-database/pinecone':
+        optional: true
+      '@supabase/supabase-js':
+        optional: true
+      '@vercel/kv':
+        optional: true
+      '@xata.io/client':
+        optional: true
+      apify-client:
+        optional: true
+      assemblyai:
+        optional: true
+      axios:
+        optional: true
+      cheerio:
+        optional: true
+      chromadb:
+        optional: true
+      convex:
+        optional: true
+      couchbase:
+        optional: true
+      d3-dsv:
+        optional: true
+      epub2:
+        optional: true
+      faiss-node:
+        optional: true
+      fast-xml-parser:
+        optional: true
+      handlebars:
+        optional: true
+      html-to-text:
+        optional: true
+      ignore:
+        optional: true
+      ioredis:
+        optional: true
+      jsdom:
+        optional: true
+      mammoth:
+        optional: true
+      mongodb:
+        optional: true
+      node-llama-cpp:
+        optional: true
+      notion-to-md:
+        optional: true
+      officeparser:
+        optional: true
+      pdf-parse:
+        optional: true
+      peggy:
+        optional: true
+      playwright:
+        optional: true
+      puppeteer:
+        optional: true
+      pyodide:
+        optional: true
+      redis:
+        optional: true
+      sonix-speech-recognition:
+        optional: true
+      srt-parser-2:
+        optional: true
+      typeorm:
+        optional: true
+      weaviate-ts-client:
+        optional: true
+      web-auth-library:
+        optional: true
+      ws:
+        optional: true
+      youtube-transcript:
+        optional: true
+      youtubei.js:
+        optional: true
+
+  langchain@0.2.4:
+    resolution: {integrity: sha512-zBsBuNREn/3IlWvIQqhQ2iqf6JJhyjjsB1Db/keDkcgThPI3EcblC1pqAXU2BIKHmpNUkHBR2bAUok5+xtgOcw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@aws-sdk/client-s3': ^3.310.0
+      '@aws-sdk/client-sagemaker-runtime': ^3.310.0
+      '@aws-sdk/client-sfn': ^3.310.0
+      '@aws-sdk/credential-provider-node': ^3.388.0
+      '@azure/storage-blob': ^12.15.0
+      '@browserbasehq/sdk': '*'
+      '@gomomento/sdk': ^1.51.1
+      '@gomomento/sdk-core': ^1.51.1
+      '@gomomento/sdk-web': ^1.51.1
+      '@mendable/firecrawl-js': ^0.0.13
+      '@notionhq/client': ^2.2.10
+      '@pinecone-database/pinecone': '*'
+      '@supabase/supabase-js': ^2.10.0
+      '@vercel/kv': ^0.2.3
+      '@xata.io/client': ^0.28.0
+      apify-client: ^2.7.1
+      assemblyai: ^4.0.0
+      axios: '*'
+      cheerio: ^1.0.0-rc.12
+      chromadb: '*'
+      convex: ^1.3.1
+      couchbase: ^4.3.0
+      d3-dsv: ^2.0.0
+      epub2: ^3.0.1
+      faiss-node: '*'
+      fast-xml-parser: '*'
+      handlebars: ^4.7.8
+      html-to-text: ^9.0.5
+      ignore: ^5.2.0
+      ioredis: ^5.3.2
+      jsdom: '*'
+      mammoth: ^1.6.0
+      mongodb: '>=5.2.0'
+      node-llama-cpp: '*'
+      notion-to-md: ^3.1.0
+      officeparser: ^4.0.4
+      pdf-parse: 1.1.1
+      peggy: ^3.0.2
+      playwright: ^1.32.1
+      puppeteer: ^19.7.2
+      pyodide: ^0.24.1
+      redis: ^4.6.4
+      sonix-speech-recognition: ^2.1.1
+      srt-parser-2: ^1.2.3
+      typeorm: ^0.3.12
+      weaviate-ts-client: '*'
+      web-auth-library: ^1.0.3
+      ws: ^8.14.2
+      youtube-transcript: ^1.0.6
+      youtubei.js: ^9.1.0
+    peerDependenciesMeta:
+      '@aws-sdk/client-s3':
+        optional: true
+      '@aws-sdk/client-sagemaker-runtime':
+        optional: true
+      '@aws-sdk/client-sfn':
+        optional: true
+      '@aws-sdk/credential-provider-node':
+        optional: true
+      '@azure/storage-blob':
+        optional: true
+      '@browserbasehq/sdk':
+        optional: true
+      '@gomomento/sdk':
+        optional: true
+      '@gomomento/sdk-core':
+        optional: true
+      '@gomomento/sdk-web':
         optional: true
       '@mendable/firecrawl-js':
         optional: true
@@ -2551,6 +2708,20 @@ packages:
 
   langsmith@0.1.28:
     resolution: {integrity: sha512-IQUbo7I7rEE6QYBhrcgwqvlkcUsHlia0yTQpDwWdITw/VJx1f7gLPjNdbwWE+jvOZ4HcD7gCf2HR6zFXputu5A==}
+    peerDependencies:
+      '@langchain/core': '*'
+      langchain: '*'
+      openai: '*'
+    peerDependenciesMeta:
+      '@langchain/core':
+        optional: true
+      langchain:
+        optional: true
+      openai:
+        optional: true
+
+  langsmith@0.1.30:
+    resolution: {integrity: sha512-g8f10H1iiRjCweXJjgM3Y9xl6ApCa1OThDvc0BlSDLVrGVPy1on9wT39vAzYkeadC7oG48p7gfpGlYH3kLkJ9Q==}
     peerDependencies:
       '@langchain/core': '*'
       langchain: '*'
@@ -3305,8 +3476,8 @@ packages:
     peerDependencies:
       typescript: '>=4.2.0'
 
-  ts-jest@29.1.3:
-    resolution: {integrity: sha512-6L9qz3ginTd1NKhOxmkP0qU3FyKjj5CPoY+anszfVn6Pmv/RIKzhiMCsH7Yb7UvJR9I2A64rm4zQl531s2F1iw==}
+  ts-jest@29.1.4:
+    resolution: {integrity: sha512-YiHwDhSvCiItoAgsKtoLFCuakDzDsJ1DLDnSouTaTmdOcOwIkSzbLXduaQ6M5DRVhuZC/NYaaZ/mtHbWMv/S6Q==}
     engines: {node: ^14.15.0 || ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -3861,27 +4032,27 @@ snapshots:
   '@jest/console@29.7.0':
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       chalk: 4.1.2
       jest-message-util: 29.7.0
       jest-util: 29.7.0
       slash: 3.0.0
 
-  '@jest/core@29.7.0(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5))':
+  '@jest/core@29.7.0(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5))':
     dependencies:
       '@jest/console': 29.7.0
       '@jest/reporters': 29.7.0
       '@jest/test-result': 29.7.0
       '@jest/transform': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       ci-info: 3.9.0
       exit: 0.1.2
       graceful-fs: 4.2.11
       jest-changed-files: 29.7.0
-      jest-config: 29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5))
+      jest-config: 29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5))
       jest-haste-map: 29.7.0
       jest-message-util: 29.7.0
       jest-regex-util: 29.6.3
@@ -3906,7 +4077,7 @@ snapshots:
     dependencies:
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       jest-mock: 29.7.0
 
   '@jest/expect-utils@29.7.0':
@@ -3924,7 +4095,7 @@ snapshots:
     dependencies:
       '@jest/types': 29.6.3
       '@sinonjs/fake-timers': 10.3.0
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
@@ -3946,7 +4117,7 @@ snapshots:
       '@jest/transform': 29.7.0
       '@jest/types': 29.6.3
       '@jridgewell/trace-mapping': 0.3.25
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       chalk: 4.1.2
       collect-v8-coverage: 1.0.2
       exit: 0.1.2
@@ -4016,7 +4187,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       '@types/yargs': 17.0.32
       chalk: 4.1.2
 
@@ -4047,10 +4218,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@langchain/anthropic@0.1.21(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
+  '@langchain/anthropic@0.1.21(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
     dependencies:
       '@anthropic-ai/sdk': 0.21.1
-      '@langchain/core': 0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      '@langchain/core': 0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       fast-xml-parser: 4.4.0
       zod: 3.23.8
       zod-to-json-schema: 3.23.0(zod@3.23.8)
@@ -4059,16 +4230,16 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/community@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(lodash@4.17.21)(openai@4.47.1)':
+  '@langchain/community@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(lodash@4.17.21)(openai@4.47.1)':
     dependencies:
-      '@langchain/core': 0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
-      '@langchain/openai': 0.0.33(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))
+      '@langchain/core': 0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      '@langchain/openai': 0.0.33(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))
       binary-extensions: 2.3.0
       expr-eval: 2.0.2
       flat: 5.0.2
       js-yaml: 4.1.0
-      langchain: 0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1)
-      langsmith: 0.1.28(@langchain/core@0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      langchain: 0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1)
+      langsmith: 0.1.28(@langchain/core@0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       uuid: 9.0.1
       zod: 3.23.8
       zod-to-json-schema: 3.23.0(zod@3.23.8)
@@ -4085,13 +4256,13 @@ snapshots:
       - peggy
       - pyodide
 
-  '@langchain/core@0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
+  '@langchain/core@0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
     dependencies:
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.12
-      langsmith: 0.1.28(@langchain/core@0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      langsmith: 0.1.30(@langchain/core@0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       ml-distance: 4.0.1
       mustache: 4.2.0
       p-queue: 6.6.2
@@ -4103,18 +4274,36 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/langgraph@0.0.21(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
+  '@langchain/core@0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
     dependencies:
-      '@langchain/core': 0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      ansi-styles: 5.2.0
+      camelcase: 6.3.0
+      decamelize: 1.2.0
+      js-tiktoken: 1.0.12
+      langsmith: 0.1.30(@langchain/core@0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      ml-distance: 4.0.1
+      mustache: 4.2.0
+      p-queue: 6.6.2
+      p-retry: 4.6.2
+      uuid: 9.0.1
+      zod: 3.23.8
+      zod-to-json-schema: 3.23.0(zod@3.23.8)
+    transitivePeerDependencies:
+      - langchain
+      - openai
+
+  '@langchain/langgraph@0.0.21(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
+    dependencies:
+      '@langchain/core': 0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       uuid: 9.0.1
     transitivePeerDependencies:
       - langchain
       - openai
 
-  '@langchain/mistralai@0.0.22(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
+  '@langchain/mistralai@0.0.23(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
     dependencies:
-      '@langchain/core': 0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
-      '@mistralai/mistralai': 0.1.3
+      '@langchain/core': 0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      '@mistralai/mistralai': 0.4.0
       uuid: 9.0.1
       zod: 3.23.8
       zod-to-json-schema: 3.23.0(zod@3.23.8)
@@ -4123,9 +4312,9 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/openai@0.0.33(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))':
+  '@langchain/openai@0.0.33(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))':
     dependencies:
-      '@langchain/core': 0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      '@langchain/core': 0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       js-tiktoken: 1.0.12
       openai: 4.47.1
       zod: 3.23.8
@@ -4134,9 +4323,28 @@ snapshots:
       - encoding
       - langchain
 
-  '@langchain/textsplitters@0.0.2(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
+  '@langchain/openai@0.1.0(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))':
     dependencies:
-      '@langchain/core': 0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      '@langchain/core': 0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      js-tiktoken: 1.0.12
+      openai: 4.47.1
+      zod: 3.23.8
+      zod-to-json-schema: 3.23.0(zod@3.23.8)
+    transitivePeerDependencies:
+      - encoding
+      - langchain
+
+  '@langchain/textsplitters@0.0.2(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
+    dependencies:
+      '@langchain/core': 0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      js-tiktoken: 1.0.12
+    transitivePeerDependencies:
+      - langchain
+      - openai
+
+  '@langchain/textsplitters@0.0.2(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)':
+    dependencies:
+      '@langchain/core': 0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       js-tiktoken: 1.0.12
     transitivePeerDependencies:
       - langchain
@@ -4148,7 +4356,7 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
-  '@mistralai/mistralai@0.1.3':
+  '@mistralai/mistralai@0.4.0':
     dependencies:
       node-fetch: 2.7.0
     transitivePeerDependencies:
@@ -4325,11 +4533,11 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
 
   '@types/cookiejar@2.1.5': {}
 
@@ -4347,7 +4555,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.1':
     dependencies:
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       '@types/qs': 6.9.15
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -4361,7 +4569,7 @@ snapshots:
 
   '@types/graceful-fs@4.1.9':
     dependencies:
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
 
   '@types/http-errors@2.0.4': {}
 
@@ -4388,14 +4596,14 @@ snapshots:
 
   '@types/node-fetch@2.6.11':
     dependencies:
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       form-data: 4.0.0
 
   '@types/node@18.19.33':
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@20.12.12':
+  '@types/node@20.13.0':
     dependencies:
       undici-types: 5.26.5
 
@@ -4408,12 +4616,12 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
 
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       '@types/send': 0.17.4
 
   '@types/stack-utils@2.0.3': {}
@@ -4422,7 +4630,7 @@ snapshots:
     dependencies:
       '@types/cookiejar': 2.1.5
       '@types/methods': 1.1.4
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
 
   '@types/supertest@6.0.2':
     dependencies:
@@ -4437,14 +4645,14 @@ snapshots:
     dependencies:
       '@types/yargs-parser': 21.0.3
 
-  '@typescript-eslint/eslint-plugin@7.10.0(@typescript-eslint/parser@7.10.0(eslint@9.3.0)(typescript@5.4.5))(eslint@9.3.0)(typescript@5.4.5)':
+  '@typescript-eslint/eslint-plugin@7.11.0(@typescript-eslint/parser@7.11.0(eslint@9.3.0)(typescript@5.4.5))(eslint@9.3.0)(typescript@5.4.5)':
     dependencies:
       '@eslint-community/regexpp': 4.10.0
-      '@typescript-eslint/parser': 7.10.0(eslint@9.3.0)(typescript@5.4.5)
-      '@typescript-eslint/scope-manager': 7.10.0
-      '@typescript-eslint/type-utils': 7.10.0(eslint@9.3.0)(typescript@5.4.5)
-      '@typescript-eslint/utils': 7.10.0(eslint@9.3.0)(typescript@5.4.5)
-      '@typescript-eslint/visitor-keys': 7.10.0
+      '@typescript-eslint/parser': 7.11.0(eslint@9.3.0)(typescript@5.4.5)
+      '@typescript-eslint/scope-manager': 7.11.0
+      '@typescript-eslint/type-utils': 7.11.0(eslint@9.3.0)(typescript@5.4.5)
+      '@typescript-eslint/utils': 7.11.0(eslint@9.3.0)(typescript@5.4.5)
+      '@typescript-eslint/visitor-keys': 7.11.0
       eslint: 9.3.0
       graphemer: 1.4.0
       ignore: 5.3.1
@@ -4455,12 +4663,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@7.10.0(eslint@9.3.0)(typescript@5.4.5)':
+  '@typescript-eslint/parser@7.11.0(eslint@9.3.0)(typescript@5.4.5)':
     dependencies:
-      '@typescript-eslint/scope-manager': 7.10.0
-      '@typescript-eslint/types': 7.10.0
-      '@typescript-eslint/typescript-estree': 7.10.0(typescript@5.4.5)
-      '@typescript-eslint/visitor-keys': 7.10.0
+      '@typescript-eslint/scope-manager': 7.11.0
+      '@typescript-eslint/types': 7.11.0
+      '@typescript-eslint/typescript-estree': 7.11.0(typescript@5.4.5)
+      '@typescript-eslint/visitor-keys': 7.11.0
       debug: 4.3.4
       eslint: 9.3.0
     optionalDependencies:
@@ -4468,15 +4676,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/scope-manager@7.10.0':
+  '@typescript-eslint/scope-manager@7.11.0':
     dependencies:
-      '@typescript-eslint/types': 7.10.0
-      '@typescript-eslint/visitor-keys': 7.10.0
+      '@typescript-eslint/types': 7.11.0
+      '@typescript-eslint/visitor-keys': 7.11.0
 
-  '@typescript-eslint/type-utils@7.10.0(eslint@9.3.0)(typescript@5.4.5)':
+  '@typescript-eslint/type-utils@7.11.0(eslint@9.3.0)(typescript@5.4.5)':
     dependencies:
-      '@typescript-eslint/typescript-estree': 7.10.0(typescript@5.4.5)
-      '@typescript-eslint/utils': 7.10.0(eslint@9.3.0)(typescript@5.4.5)
+      '@typescript-eslint/typescript-estree': 7.11.0(typescript@5.4.5)
+      '@typescript-eslint/utils': 7.11.0(eslint@9.3.0)(typescript@5.4.5)
       debug: 4.3.4
       eslint: 9.3.0
       ts-api-utils: 1.3.0(typescript@5.4.5)
@@ -4485,12 +4693,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/types@7.10.0': {}
+  '@typescript-eslint/types@7.11.0': {}
 
-  '@typescript-eslint/typescript-estree@7.10.0(typescript@5.4.5)':
+  '@typescript-eslint/typescript-estree@7.11.0(typescript@5.4.5)':
     dependencies:
-      '@typescript-eslint/types': 7.10.0
-      '@typescript-eslint/visitor-keys': 7.10.0
+      '@typescript-eslint/types': 7.11.0
+      '@typescript-eslint/visitor-keys': 7.11.0
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
@@ -4502,20 +4710,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@7.10.0(eslint@9.3.0)(typescript@5.4.5)':
+  '@typescript-eslint/utils@7.11.0(eslint@9.3.0)(typescript@5.4.5)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.3.0)
-      '@typescript-eslint/scope-manager': 7.10.0
-      '@typescript-eslint/types': 7.10.0
-      '@typescript-eslint/typescript-estree': 7.10.0(typescript@5.4.5)
+      '@typescript-eslint/scope-manager': 7.11.0
+      '@typescript-eslint/types': 7.11.0
+      '@typescript-eslint/typescript-estree': 7.11.0(typescript@5.4.5)
       eslint: 9.3.0
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  '@typescript-eslint/visitor-keys@7.10.0':
+  '@typescript-eslint/visitor-keys@7.11.0':
     dependencies:
-      '@typescript-eslint/types': 7.10.0
+      '@typescript-eslint/types': 7.11.0
       eslint-visitor-keys: 3.4.3
 
   '@webassemblyjs/ast@1.12.1':
@@ -4970,13 +5178,13 @@ snapshots:
     optionalDependencies:
       typescript: 5.3.3
 
-  create-jest@29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5)):
+  create-jest@29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5)):
     dependencies:
       '@jest/types': 29.6.3
       chalk: 4.1.2
       exit: 0.1.2
       graceful-fs: 4.2.11
-      jest-config: 29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5))
+      jest-config: 29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5))
       jest-util: 29.7.0
       prompts: 2.4.2
     transitivePeerDependencies:
@@ -5661,7 +5869,7 @@ snapshots:
       '@jest/expect': 29.7.0
       '@jest/test-result': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       chalk: 4.1.2
       co: 4.6.0
       dedent: 1.5.3
@@ -5681,16 +5889,16 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  jest-cli@29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5)):
+  jest-cli@29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5)):
     dependencies:
-      '@jest/core': 29.7.0(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5))
+      '@jest/core': 29.7.0(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5))
       '@jest/test-result': 29.7.0
       '@jest/types': 29.6.3
       chalk: 4.1.2
-      create-jest: 29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5))
+      create-jest: 29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5))
       exit: 0.1.2
       import-local: 3.1.0
-      jest-config: 29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5))
+      jest-config: 29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5))
       jest-util: 29.7.0
       jest-validate: 29.7.0
       yargs: 17.7.2
@@ -5700,7 +5908,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  jest-config@29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5)):
+  jest-config@29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5)):
     dependencies:
       '@babel/core': 7.24.6
       '@jest/test-sequencer': 29.7.0
@@ -5725,8 +5933,8 @@ snapshots:
       slash: 3.0.0
       strip-json-comments: 3.1.1
     optionalDependencies:
-      '@types/node': 20.12.12
-      ts-node: 10.9.2(@types/node@20.12.12)(typescript@5.4.5)
+      '@types/node': 20.13.0
+      ts-node: 10.9.2(@types/node@20.13.0)(typescript@5.4.5)
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -5755,7 +5963,7 @@ snapshots:
       '@jest/environment': 29.7.0
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
 
@@ -5765,7 +5973,7 @@ snapshots:
     dependencies:
       '@jest/types': 29.6.3
       '@types/graceful-fs': 4.1.9
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       anymatch: 3.1.3
       fb-watchman: 2.0.2
       graceful-fs: 4.2.11
@@ -5804,7 +6012,7 @@ snapshots:
   jest-mock@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       jest-util: 29.7.0
 
   jest-pnp-resolver@1.2.3(jest-resolve@29.7.0):
@@ -5839,7 +6047,7 @@ snapshots:
       '@jest/test-result': 29.7.0
       '@jest/transform': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       chalk: 4.1.2
       emittery: 0.13.1
       graceful-fs: 4.2.11
@@ -5867,7 +6075,7 @@ snapshots:
       '@jest/test-result': 29.7.0
       '@jest/transform': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       chalk: 4.1.2
       cjs-module-lexer: 1.3.1
       collect-v8-coverage: 1.0.2
@@ -5913,7 +6121,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -5932,7 +6140,7 @@ snapshots:
     dependencies:
       '@jest/test-result': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       emittery: 0.13.1
@@ -5941,23 +6149,23 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
-  jest@29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5)):
+  jest@29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5)):
     dependencies:
-      '@jest/core': 29.7.0(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5))
+      '@jest/core': 29.7.0(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5))
       '@jest/types': 29.6.3
       import-local: 3.1.0
-      jest-cli: 29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5))
+      jest-cli: 29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5))
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -6011,17 +6219,42 @@ snapshots:
 
   kleur@3.0.3: {}
 
-  langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1):
+  langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1):
     dependencies:
-      '@langchain/core': 0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
-      '@langchain/openai': 0.0.33(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))
-      '@langchain/textsplitters': 0.0.2(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      '@langchain/core': 0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      '@langchain/openai': 0.0.33(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))
+      '@langchain/textsplitters': 0.0.2(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       binary-extensions: 2.3.0
       js-tiktoken: 1.0.12
       js-yaml: 4.1.0
       jsonpointer: 5.0.1
       langchainhub: 0.0.11
-      langsmith: 0.1.28(@langchain/core@0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      langsmith: 0.1.28(@langchain/core@0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      ml-distance: 4.0.1
+      openapi-types: 12.1.3
+      p-retry: 4.6.2
+      uuid: 9.0.1
+      yaml: 2.4.2
+      zod: 3.23.8
+      zod-to-json-schema: 3.23.0(zod@3.23.8)
+    optionalDependencies:
+      fast-xml-parser: 4.4.0
+      ignore: 5.3.1
+    transitivePeerDependencies:
+      - encoding
+      - openai
+
+  langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1):
+    dependencies:
+      '@langchain/core': 0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      '@langchain/openai': 0.1.0(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))
+      '@langchain/textsplitters': 0.0.2(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      binary-extensions: 2.3.0
+      js-tiktoken: 1.0.12
+      js-yaml: 4.1.0
+      jsonpointer: 5.0.1
+      langchainhub: 0.0.11
+      langsmith: 0.1.30(@langchain/core@0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
       ml-distance: 4.0.1
       openapi-types: 12.1.3
       p-retry: 4.6.2
@@ -6038,7 +6271,7 @@ snapshots:
 
   langchainhub@0.0.11: {}
 
-  langsmith@0.1.28(@langchain/core@0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1):
+  langsmith@0.1.28(@langchain/core@0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1):
     dependencies:
       '@types/uuid': 9.0.8
       commander: 10.0.1
@@ -6046,8 +6279,32 @@ snapshots:
       p-retry: 4.6.2
       uuid: 9.0.1
     optionalDependencies:
-      '@langchain/core': 0.2.1(langchain@0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
-      langchain: 0.2.2(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1)
+      '@langchain/core': 0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      langchain: 0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1)
+      openai: 4.47.1
+
+  langsmith@0.1.30(@langchain/core@0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1):
+    dependencies:
+      '@types/uuid': 9.0.8
+      commander: 10.0.1
+      p-queue: 6.6.2
+      p-retry: 4.6.2
+      uuid: 9.0.1
+    optionalDependencies:
+      '@langchain/core': 0.2.5(langchain@0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      langchain: 0.2.3(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1)
+      openai: 4.47.1
+
+  langsmith@0.1.30(@langchain/core@0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1))(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1):
+    dependencies:
+      '@types/uuid': 9.0.8
+      commander: 10.0.1
+      p-queue: 6.6.2
+      p-retry: 4.6.2
+      uuid: 9.0.1
+    optionalDependencies:
+      '@langchain/core': 0.2.5(langchain@0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1))(openai@4.47.1)
+      langchain: 0.2.4(fast-xml-parser@4.4.0)(ignore@5.3.1)(openai@4.47.1)
       openai: 4.47.1
 
   leven@3.1.0: {}
@@ -6739,11 +6996,11 @@ snapshots:
     dependencies:
       typescript: 5.4.5
 
-  ts-jest@29.1.3(@babel/core@7.24.6)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.24.6))(jest@29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5)))(typescript@5.4.5):
+  ts-jest@29.1.4(@babel/core@7.24.6)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.24.6))(jest@29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5)))(typescript@5.4.5):
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 29.7.0(@types/node@20.12.12)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5))
+      jest: 29.7.0(@types/node@20.13.0)(ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5))
       jest-util: 29.7.0
       json5: 2.2.3
       lodash.memoize: 4.1.2
@@ -6767,14 +7024,14 @@ snapshots:
       typescript: 5.4.5
       webpack: 5.90.1
 
-  ts-node@10.9.2(@types/node@20.12.12)(typescript@5.4.5):
+  ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.12.12
+      '@types/node': 20.13.0
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
