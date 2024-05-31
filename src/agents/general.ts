@@ -1,10 +1,10 @@
+import { HumanMessage } from "@langchain/core/messages";
 import { RunnableConfig } from "@langchain/core/runnables";
 import calculatorTool from "src/tools/general/calculator";
 import createAgent from "utils/createagent";
-import { runAgentNode } from "utils/runAgentNode";
+import { AgentStateChannels } from "utils/state";
 
 export default async function GeneralAgent(llm: any) {
-    // Research agent and node
     const generalAgent = await createAgent(
         llm,
         [calculatorTool],
@@ -12,12 +12,14 @@ export default async function GeneralAgent(llm: any) {
     );
 
     // Config is needed for RunnableConfig
-    async function generalNode(state, config: RunnableConfig) {
-        return runAgentNode({
-            state: state,
-            agent: generalAgent,
-            name: "General",
-        });
+    async function generalNode(state: AgentStateChannels, config?: RunnableConfig) {
+        const result = await generalAgent.invoke(state, config);
+        console.log(result.output);
+        return {
+            messages: [
+                new HumanMessage({ content: result.output, name: "General" }),
+            ],
+        };
     }
     return generalNode;
 }

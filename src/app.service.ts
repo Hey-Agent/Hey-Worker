@@ -1,6 +1,7 @@
 
-import { BaseMessage, HumanMessage } from '@langchain/core/messages';
+import { HumanMessage } from '@langchain/core/messages';
 import { ChatPromptTemplate, MessagesPlaceholder } from '@langchain/core/prompts';
+import { RunnableLike } from '@langchain/core/runnables';
 import { END, START, StateGraph } from "@langchain/langgraph";
 import { CompiledStateGraph } from '@langchain/langgraph/dist/graph/state';
 import { Injectable } from '@nestjs/common';
@@ -11,14 +12,8 @@ import { JsonOutputToolsParser } from "langchain/output_parsers";
 import generateLLM from 'utils/generateAiAgent';
 import { isToolMessage } from 'utils/runAgentNode';
 import { AgentStateChannels, agentStateChannels } from 'utils/state';
-import toolNode from 'utils/toolNode';
 import GeneralAgent from './agents/general';
 import NewsAgent from './agents/news';
-
-type AgentState = {
-  lastNode?: string;
-  messages: BaseMessage[];
-};
 
 
 @Injectable()
@@ -26,7 +21,7 @@ export class AppService {
   llm;
   memory: ConversationSummaryBufferMemory;
   agents = [];
-  graph: CompiledStateGraph<unknown, Partial<unknown>, "__start__">;
+  graph: CompiledStateGraph<AgentStateChannels, unknown, string>;
   supervisorChain: any;
 
   constructor(private configService: ConfigService) {
@@ -57,7 +52,7 @@ export class AppService {
       " respond with the worker to act next. Each worker will perform a" +
       " task and respond with their results and status. When finished," +
       " respond with FINISH.";
-    const options = ["FINISH", ...members];
+    const options = [END, ...members];
 
     const functionDef = {
       name: "route",
@@ -106,11 +101,14 @@ export class AppService {
     });
 
     this.supervisorChain = formattedPrompt
-      .pipe(this.llm.bind({
-        tools: [toolDef],
-        tool_choice: { "type": "function", "function": { "name": "route" } },
-      }))
+      .pipe(this.llm.bindTools(
+        [toolDef],
+        {
+          tool_choice: { "type": "function", "function": { "name": "route" } },
+        },
+      ))
       .pipe(new JsonOutputToolsParser())
+      // select the first one
       .pipe((x) => (x[0].args));
 
     this.initGraph();
@@ -136,12 +134,18 @@ export class AppService {
 
 
   async initGraph() {
-    const workflow = new StateGraph<AgentState, Partial<AgentState>, string>({ channels: agentStateChannels });
+    // temp variables
+    let t: RunnableLike<AgentStateChannels, unknown>;
+
+
+    const workflow = new StateGraph<AgentStateChannels, unknown, string>({
+      channels: agentStateChannels,
+    });
 
     workflow.addNode('Supervisor', this.supervisorChain);
 
+
     const members = this.getMembers();
-    let t;
 
     // 2. Add the nodes; these will do the works
     for (const member of members) {
@@ -150,84 +154,38 @@ export class AppService {
           t = await GeneralAgent(this.llm);
           this.agents = [...this.agents, t];
           workflow.addNode(member, t);
-          // @ts-ignore
-          workflow.addEdge('General', 'Supervisor');
+          workflow.addEdge(member, 'Supervisor');
           break;
         case 'News':
           t = await NewsAgent(this.llm);
           this.agents = [...this.agents, t];
           workflow.addNode(member, t);
-          // @ts-ignore
           workflow.addEdge('News', 'Supervisor');
           break;
       }
     }
 
-    workflow.addNode('call_tool', toolNode);
-
-    // @ts-ignore
-    workflow.addConditionalEdges('General', this.router, {
-      continue: 'News',
-      call_tool: 'call_tool',
-      end: END,
-    });
-
-    // @ts-ignore
-    workflow.addConditionalEdges('News', this.router, {
-      continue: 'General',
-      call_tool: 'call_tool',
-      end: END,
-    });
-
     workflow.addConditionalEdges(
-      // @ts-ignore
-      'call_tool',
-      // @ts-ignore
-      (x) => x.sender,
-      {
-        General: 'General',
-        News: 'News',
-      },
-    );
-
-    const conditionalMap: { [key: string]: string } = members.reduce(
-      (acc, member) => {
-        acc[member] = member;
-        return acc;
-      },
-      {},
-    );
-
-    // Or end work if done
-    conditionalMap["FINISH"] = END;
-    // console.log(conditionalMap)
-    workflow.addConditionalEdges(
-      // @ts-ignore
       "Supervisor",
-      // @ts-ignore
       (x: AgentStateChannels) => x.next,
-      conditionalMap,
     );
-    // @ts-ignore
+
     workflow.addEdge(START, 'Supervisor');
 
-    // @ts-ignore
-    // workflow.addEdge('Supervisor', END);
-    // workflow.setEntryPoint("Supervisor");
     this.graph = workflow.compile();
-    console.log(this.graph.getGraph());
+
     const streamResults = await this.graph.stream(
       {
         messages: [
           new HumanMessage({
-            content: 'What is the latest news',
+            content: 'Calculate 2+2 and give me the latest news',
           }),
         ],
       },
+      { recursionLimit: 100 },
     );
-    console.log("invoked")
+
     for await (const output of await streamResults) {
-      console.log('--start--');
       if (!output?.__end__) {
         console.log('----');
         console.log(output);

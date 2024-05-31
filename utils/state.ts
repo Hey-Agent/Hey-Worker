@@ -1,33 +1,20 @@
 import { BaseMessage } from "@langchain/core/messages";
-
-const upsertKeys = (
-    left?: Record<string, string>,
-    right?: Record<string, string>
-) => {
-    if (!left) {
-        left = {};
-    }
-    if (!right) {
-        return left;
-    }
-    return { ...left, ...right };
-};
+import { END, StateGraphArgs } from "@langchain/langgraph";
 
 export interface AgentStateChannels {
-    messages: {
-        value: (x: BaseMessage[], y: BaseMessage[]) => BaseMessage[];
-        default: () => BaseMessage[];
-    };
+    messages: BaseMessage[];
     // The agent node that last performed work
-    sender: string;
+    next: string;
 }
-
 // This defines the object that is passed between each node
 // in the graph. We will create different nodes for each agent and tool
-export const agentStateChannels: AgentStateChannels = {
+export const agentStateChannels: StateGraphArgs<AgentStateChannels>["channels"] = {
     messages: {
-        value: (x: BaseMessage[], y: BaseMessage[]) => x.concat(y),
+        value: (x?: BaseMessage[], y?: BaseMessage[]) => (x ?? []).concat(y ?? []),
         default: () => [],
     },
-    sender: 'user',
+    next: {
+        value: (x?: string, y?: string) => y ?? x ?? END,
+        default: () => END,
+    },
 };
