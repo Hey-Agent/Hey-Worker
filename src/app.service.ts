@@ -1,9 +1,11 @@
 
-import { HumanMessage } from '@langchain/core/messages';
+import { BaseChatModel } from '@langchain/core/language_models/chat_models';
+import { AIMessageChunk, HumanMessage } from '@langchain/core/messages';
 import { ChatPromptTemplate, MessagesPlaceholder } from '@langchain/core/prompts';
 import { RunnableLike } from '@langchain/core/runnables';
 import { END, START, StateGraph } from "@langchain/langgraph";
 import { CompiledStateGraph } from '@langchain/langgraph/dist/graph/state';
+import { ChatOpenAICallOptions } from '@langchain/openai';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { LLMOptions } from 'config/types/llmOptions';
@@ -18,7 +20,7 @@ import NewsAgent from './agents/news';
 
 @Injectable()
 export class AppService {
-  llm;
+  llm: BaseChatModel<ChatOpenAICallOptions, AIMessageChunk>;
   memory: ConversationSummaryBufferMemory;
   agents = [];
   graph: CompiledStateGraph<AgentStateChannels, unknown, string>;
@@ -178,7 +180,7 @@ export class AppService {
       {
         messages: [
           new HumanMessage({
-            content: 'Calculate 2+2 and give me the latest news',
+            content: 'Calculate 123/11*412 and give me the latest news',
           }),
         ],
       },

@@ -2,5 +2,6 @@
   "files.exclude": {
     "dist/": true,
     "node_modules/": true
-  }
+  },
+  "codium.codeCompletion.enable": true
 }
