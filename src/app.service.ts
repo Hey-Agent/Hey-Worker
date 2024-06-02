@@ -1,7 +1,8 @@
+import { HumanMessage } from '@langchain/core/messages';
 
 import { BaseChatModel } from '@langchain/core/language_models/chat_models';
-import { AIMessageChunk, HumanMessage } from '@langchain/core/messages';
-import { ChatPromptTemplate, MessagesPlaceholder } from '@langchain/core/prompts';
+import { AIMessageChunk } from '@langchain/core/messages';
+import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { RunnableLike } from '@langchain/core/runnables';
 import { END, START, StateGraph } from "@langchain/langgraph";
 import { CompiledStateGraph } from '@langchain/langgraph/dist/graph/state';
@@ -12,10 +13,13 @@ import { LLMOptions } from 'config/types/llmOptions';
 import { ConversationSummaryBufferMemory } from "langchain/memory";
 import { JsonOutputToolsParser } from "langchain/output_parsers";
 import generateLLM from 'utils/generateAiAgent';
-import { isToolMessage } from 'utils/runAgentNode';
-import { AgentStateChannels, agentStateChannels } from 'utils/state';
+import { PlanExecuteState, planExecuteState } from 'utils/planExecuteState';
+import { planTool } from 'utils/planFunction';
+import { responseTool } from 'utils/responseToll';
 import GeneralAgent from './agents/general';
 import NewsAgent from './agents/news';
+import calculatorTool from './tools/general/calculator';
+import newsTool from './tools/general/news';
 
 
 @Injectable()
@@ -23,8 +27,8 @@ export class AppService {
   llm: BaseChatModel<ChatOpenAICallOptions, AIMessageChunk>;
   memory: ConversationSummaryBufferMemory;
   agents = [];
-  graph: CompiledStateGraph<AgentStateChannels, unknown, string>;
-  supervisorChain: any;
+  graph: CompiledStateGraph<PlanExecuteState, unknown, string>;
+  tools = [calculatorTool, newsTool];
 
   constructor(private configService: ConfigService) {
     const temperature = this.configService.get<number>('temperature');
@@ -32,7 +36,7 @@ export class AppService {
 
     const llmOptions: LLMOptions = {
       temperature,
-      apiKey: process.env.OPENAI_API_KEY,
+      apiKey: process.env.OPENAI_API_KEY || process.env.GROQ_API_KEY,
       azureOpenAIApiKey: process.env.AZURE_OPENAI_API_KEY,
       azureOpenAIApiVersion: process.env.AZURE_OPENAI_API_VERSION,
       azureOpenAIApiInstanceName: process.env.AZURE_OPENAI_API_INSTANCE_NAME,
@@ -40,159 +44,114 @@ export class AppService {
     };
 
     this.llm = generateLLM(defaultAi, llmOptions);
-    this.genSuperVisorChain();
+    this.genSuperVisorChain(defaultAi, llmOptions);
   }
 
   getMembers(): string[] {
     return ["General", "News"];
   }
 
-  async genSuperVisorChain() {
-    const members = this.getMembers();
-    const systemPrompt = "You are a supervisor tasked with managing a conversation between the" +
-      " following workers: {members}. Given the following user request," +
-      " respond with the worker to act next. Each worker will perform a" +
-      " task and respond with their results and status. When finished," +
-      " respond with FINISH.";
-    const options = [END, ...members];
+  async genSuperVisorChain(defaultAi, llmOptions) {
+    let members = this.getMembers();
 
-    const functionDef = {
-      name: "route",
-      description: "Select the next role.",
-      parameters: {
-        title: "routeSchema",
-        type: "object",
-        properties: {
-          next: {
-            title: "Next",
-            anyOf: [
-              { enum: options },
-            ],
-          },
-        },
-        required: ["next"],
-      },
-    };
+    const plannerPrompt = ChatPromptTemplate.fromTemplate(
+      `For the given objective, come up with a simple step by step plan. 
+    This plan should involve individual tasks, that if executed correctly will yield the correct answer. Do not add any superfluous steps.
+    The result of the final step should be the final answer. Make sure that each step has all the information needed - do not skip steps.
+    
+    Your objective was this:
+    {input}
+    
+    Your original plan was this:
+    {plan}
+    
+    You have currently done the follow steps:
+    {pastSteps}
+    
+    Here are the agents that can be assigned : ${members.join(", ")}.
 
-    const toolDef = {
-      type: "function",
-      function: functionDef,
-    } as const;
+    You can only call 1 function at a time, 'plan' or 'respondToUser'
 
+    Update your plan accordingly. 
+    Only add steps to the plan that still NEED to be done. Do not return previously done steps as part of the plan.
+    
+    If no more steps are needed and you can return to the user, then summarize the answer and use the 'respondToUser' function. Keep the summary short. Do not use filler words.`);
 
-    // this.memory = new ConversationSummaryBufferMemory({
-    //   llm: this.llm,
-    //   maxTokenLimit: 100,
-    // });
+    const parser = new JsonOutputToolsParser();
 
+    const planner = plannerPrompt
+      .pipe(
+        this.llm.bindTools([
+          planTool,
+          responseTool,
+        ]),
+      )
+      .pipe(parser);
 
-    const prompt = ChatPromptTemplate.fromMessages(
-      [
-        ["system", systemPrompt],
-        new MessagesPlaceholder("messages"),
-        [
-          "system",
-          "Given the conversation above, who should act next?" +
-          " Or should we FINISH? Select one of: {options}",
-        ],
-      ]);
+    async function planStep(
+      state: PlanExecuteState,
+    ): Promise<Partial<PlanExecuteState>> {
+      const output = await planner.invoke({
+        input: state.input,
+        plan: state.plan.join("\n"),
+        pastSteps: state.pastSteps
+          .map(([step, result]) => `${step}: ${result}`)
+          .join("\n"),
+      });
+      const toolCall = output[0];
 
-    const formattedPrompt = await prompt.partial({
-      options: options.join(", "),
-      members: members.join(", "),
+      if (toolCall.type == "respondToUser" || output[0].args.plan.length === 0) {
+        return { response: toolCall.args?.response, next: END };
+      }
+      return { messages: [new HumanMessage({ content: output[0].args.plan[0].instructions })], plan: toolCall.args?.plan, next: output[0].args.plan[0].agent, instructions: output[0].args.plan[0].instructions };
+    }
+
+    const workflow = new StateGraph<PlanExecuteState, unknown, string>({
+      channels: planExecuteState,
     });
 
-    this.supervisorChain = formattedPrompt
-      .pipe(this.llm.bindTools(
-        [toolDef],
-        {
-          tool_choice: { "type": "function", "function": { "name": "route" } },
-        },
-      ))
-      .pipe(new JsonOutputToolsParser())
-      // select the first one
-      .pipe((x) => (x[0].args));
+    workflow.addNode('planner', planStep);
 
-    this.initGraph();
-  }
-
-  router(state) {
-    console.log(state);
-    const messages = state.messages;
-    const lastMessage = messages[messages.length - 1];
-    if (isToolMessage(lastMessage)) {
-      // The previous agent is invoking a tool
-      return "call_tool";
-    }
-    if (
-      typeof lastMessage.content === "string" &&
-      lastMessage.content.includes("FINAL ANSWER")
-    ) {
-      // Any agent decided the work is done
-      return "end";
-    }
-    return "continue";
-  }
-
-
-  async initGraph() {
-    // temp variables
-    let t: RunnableLike<AgentStateChannels, unknown>;
-
-
-    const workflow = new StateGraph<AgentStateChannels, unknown, string>({
-      channels: agentStateChannels,
-    });
-
-    workflow.addNode('Supervisor', this.supervisorChain);
-
-
-    const members = this.getMembers();
-
-    // 2. Add the nodes; these will do the works
+    let t: RunnableLike<PlanExecuteState, unknown>;
     for (const member of members) {
       switch (member) {
         case 'General':
           t = await GeneralAgent(this.llm);
           this.agents = [...this.agents, t];
           workflow.addNode(member, t);
-          workflow.addEdge(member, 'Supervisor');
           break;
         case 'News':
           t = await NewsAgent(this.llm);
           this.agents = [...this.agents, t];
           workflow.addNode(member, t);
-          workflow.addEdge('News', 'Supervisor');
           break;
       }
     }
 
     workflow.addConditionalEdges(
-      "Supervisor",
-      (x: AgentStateChannels) => x.next,
+      "planner",
+      (x: PlanExecuteState) => x.next,
     );
 
-    workflow.addEdge(START, 'Supervisor');
+    members.forEach((member) => {
+      workflow.addEdge(member, "planner");
+    });
+
+    workflow.addEdge(START, 'planner');
 
     this.graph = workflow.compile();
 
-    const streamResults = await this.graph.stream(
-      {
-        messages: [
-          new HumanMessage({
-            content: 'Calculate 123/11*412 and give me the latest news',
-          }),
-        ],
-      },
-      { recursionLimit: 100 },
-    );
 
-    for await (const output of await streamResults) {
-      if (!output?.__end__) {
-        console.log('----');
-        console.log(output);
-        console.log('----');
-      }
+    const config = { recursionLimit: 50 };
+    const inputs = {
+      input: "What is 2+2 and give me the latest news",
+    };
+
+    // const result = await this.graph.invoke(inputs, config);
+    // console.log(result.response);
+    for await (const event of await this.graph.stream(inputs, config)) {
+      console.log(event);
     }
+
   }
 }

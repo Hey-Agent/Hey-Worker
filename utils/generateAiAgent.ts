@@ -1,24 +1,16 @@
 import { ChatAnthropic } from "@langchain/anthropic";
 import { ChatFireworks } from "@langchain/community/chat_models/fireworks";
 import { BaseChatModel } from "@langchain/core/language_models/chat_models";
+import { ChatGroq } from "@langchain/groq";
 import { ChatMistralAI } from "@langchain/mistralai";
 import { ChatOpenAI } from "@langchain/openai";
 import { LLMOptions } from "config/types/llmOptions";
 
-/**
- * Generates a large language model (LLM) instance based on the specified AI model and options.
- *
- * @param aiModel - The name of the AI model to use, such as "ChatOpenAI", "AzureChatOpenAI", "ChatAnthropic", "ChatMistralAI", or "ChatFireworks".
- * @param llmOptions - The options to configure the LLM instance, such as the model name, temperature, and other parameters.
- * @returns The LLM instance.
- */
+
 export default function generateLLM(
     aiModel: string,
     llmOptions: LLMOptions,
 ): BaseChatModel {
-    /**
-     * Represents a large language model (LLM) instance.
-     */
     let llm: BaseChatModel;
     switch (aiModel) {
         case 'ChatOpenAI':
@@ -39,6 +31,10 @@ export default function generateLLM(
         case 'ChatFireworks':
             llmOptions.model = 'accounts/fireworks/models/firefunction-v1';
             llm = new ChatFireworks(llmOptions);
+            break;
+        case 'ChatGroq':
+            llmOptions.model = 'llama3-70b-8192';
+            llm = new ChatGroq(llmOptions);
             break;
         default:
             throw new Error(`Invalid default AI: ${aiModel}`);

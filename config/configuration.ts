@@ -7,7 +7,8 @@ const envVarRequirements = {
     ChatAnthropic: ['ANTHROPIC_API_KEY'],
     ChatFireworks: ['FIREWORKS_API_KEY'],
     ChatMistralAI: ['MISTRAL_API_KEY'],
-    ChatOpenAI: ['OPENAI_API_KEY']
+    ChatOpenAI: ['OPENAI_API_KEY'],
+    ChatGroq: ['GROQ_API_KEY']
 };
 
 const areEnvVarsMissing = (vars) => vars.some(envVar => !process.env[envVar]);

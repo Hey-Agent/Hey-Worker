@@ -2,22 +2,27 @@ import { HumanMessage } from "@langchain/core/messages";
 import { RunnableConfig } from "@langchain/core/runnables";
 import newsTool from "src/tools/general/news";
 import createAgent from "utils/createagent";
-import { AgentStateChannels } from "utils/state";
+import { PlanExecuteState } from "utils/planExecuteState";
 
 export default async function NewsAgent(llm: any) {
     const newsAgent = await createAgent(
         llm,
         [newsTool],
-        'Provide news summary to the user',
+        'Provide news summary to the user. Use instructions and update response.',
     );
 
-    async function newsNode(state: AgentStateChannels, config?: RunnableConfig) {
-        const result = await newsAgent.invoke(state, config);
-        console.log(result.output);
+    async function newsNode(state: PlanExecuteState, config?: RunnableConfig) {
+        const task = state.instructions;
+
+        const humanMessage = new HumanMessage(task);
+
+        const input = {
+            messages: humanMessage,
+        };
+        const result = await newsAgent.invoke(input, config);
         return {
-            messages: [
-                new HumanMessage({ content: result.output, name: "News" }),
-            ],
+            pastSteps: [[task, result.output]],
+            plan: state.plan.slice(1),
         };
     }
     return newsNode;

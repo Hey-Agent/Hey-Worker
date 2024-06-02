@@ -23,6 +23,7 @@
     "@langchain/anthropic": "^0.1.21",
     "@langchain/community": "^0.2.4",
     "@langchain/core": "^0.2.5",
+    "@langchain/groq": "^0.0.12",
     "@langchain/langgraph": "^0.0.21",
     "@langchain/mistralai": "^0.0.23",
     "@langchain/openai": "^0.1.0",
@@ -35,7 +36,8 @@
     "punycode": "^2.3.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.23.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.3.2",
