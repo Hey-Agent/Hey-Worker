@@ -1,36 +1,36 @@
-import { HumanMessage } from '@langchain/core/messages';
+import { BaseMessageChunk, HumanMessage } from '@langchain/core/messages';
 
-import { BaseChatModel } from '@langchain/core/language_models/chat_models';
-import { AIMessageChunk } from '@langchain/core/messages';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { RunnableLike } from '@langchain/core/runnables';
-import { END, START, StateGraph } from "@langchain/langgraph";
+import { END, MemorySaver, START, StateGraph } from "@langchain/langgraph";
 import { CompiledStateGraph } from '@langchain/langgraph/dist/graph/state';
-import { ChatOpenAICallOptions } from '@langchain/openai';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { LLMOptions } from 'config/types/llmOptions';
-import { ConversationSummaryBufferMemory } from "langchain/memory";
 import { JsonOutputToolsParser } from "langchain/output_parsers";
 import generateLLM from 'utils/generateAiAgent';
 import { PlanExecuteState, planExecuteState } from 'utils/planExecuteState';
 import { planTool } from 'utils/planFunction';
-import { responseTool } from 'utils/responseToll';
 import GeneralAgent from './agents/general';
 import NewsAgent from './agents/news';
 import calculatorTool from './tools/general/calculator';
 import newsTool from './tools/general/news';
 
+import { BaseLanguageModelCallOptions } from '@langchain/core/language_models/base';
+import { BaseChatModel } from '@langchain/core/language_models/chat_models';
+import { CallbackHandler } from "langfuse-langchain";
+import SummarizerAgent from './agents/summarizer';
 
 @Injectable()
 export class AppService {
-  llm: BaseChatModel<ChatOpenAICallOptions, AIMessageChunk>;
-  memory: ConversationSummaryBufferMemory;
-  agents = [];
+  llm: BaseChatModel<BaseLanguageModelCallOptions, BaseMessageChunk>;
+  memory: MemorySaver;
   graph: CompiledStateGraph<PlanExecuteState, unknown, string>;
   tools = [calculatorTool, newsTool];
+  langfuseHandler: CallbackHandler;
 
   constructor(private configService: ConfigService) {
+    this.langfuseHandler = new CallbackHandler();
     const temperature = this.configService.get<number>('temperature');
     const defaultAi = this.configService.get<string>('defaultAi');
 
@@ -44,18 +44,18 @@ export class AppService {
     };
 
     this.llm = generateLLM(defaultAi, llmOptions);
-    this.genSuperVisorChain(defaultAi, llmOptions);
+    this.genSuperVisorChain();
   }
 
   getMembers(): string[] {
     return ["General", "News"];
   }
 
-  async genSuperVisorChain(defaultAi, llmOptions) {
+  async genSuperVisorChain() {
     let members = this.getMembers();
 
     const plannerPrompt = ChatPromptTemplate.fromTemplate(
-      `For the given objective, come up with a simple step by step plan. 
+      `You are planner. For the given objective, come up with a simple step by step plan. 
     This plan should involve individual tasks, that if executed correctly will yield the correct answer. Do not add any superfluous steps.
     The result of the final step should be the final answer. Make sure that each step has all the information needed - do not skip steps.
     
@@ -68,14 +68,13 @@ export class AppService {
     You have currently done the follow steps:
     {pastSteps}
     
-    Here are the agents that can be assigned : ${members.join(", ")}.
 
-    You can only call 1 function at a time, 'plan' or 'respondToUser'
+    Here are the agents that can be assigned : Planner, ${members.join(", ")}.
 
-    Update your plan accordingly. 
-    Only add steps to the plan that still NEED to be done. Do not return previously done steps as part of the plan.
-    
-    If no more steps are needed and you can return to the user, then summarize the answer and use the 'respondToUser' function. Keep the summary short. Do not use filler words.`);
+    You can set the next agent to Planner if you think you might need to step in and re-adjust the plan. You cannot ask for more information from user.
+    Some past steps might have failed, do not re-execute them and Update your plan accordingly. 
+    Do not repeat steps. Only add steps to the plan that still NEED to be done. Do not return previously done steps as part of the plan.
+    Do not use filler words. Call the Summarizer agent when all tasks are complete.`);
 
     const parser = new JsonOutputToolsParser();
 
@@ -83,7 +82,6 @@ export class AppService {
       .pipe(
         this.llm.bindTools([
           planTool,
-          responseTool,
         ]),
       )
       .pipe(parser);
@@ -100,9 +98,6 @@ export class AppService {
       });
       const toolCall = output[0];
 
-      if (toolCall.type == "respondToUser" || output[0].args.plan.length === 0) {
-        return { response: toolCall.args?.response, next: END };
-      }
       return { messages: [new HumanMessage({ content: output[0].args.plan[0].instructions })], plan: toolCall.args?.plan, next: output[0].args.plan[0].agent, instructions: output[0].args.plan[0].instructions };
     }
 
@@ -110,48 +105,75 @@ export class AppService {
       channels: planExecuteState,
     });
 
-    workflow.addNode('planner', planStep);
+    workflow.addNode('Planner', planStep);
 
     let t: RunnableLike<PlanExecuteState, unknown>;
     for (const member of members) {
       switch (member) {
         case 'General':
           t = await GeneralAgent(this.llm);
-          this.agents = [...this.agents, t];
           workflow.addNode(member, t);
           break;
         case 'News':
           t = await NewsAgent(this.llm);
-          this.agents = [...this.agents, t];
           workflow.addNode(member, t);
           break;
       }
     }
 
+    t = await SummarizerAgent(this.llm);
+    workflow.addNode('Summarizer', t);
+
     workflow.addConditionalEdges(
-      "planner",
+      "Planner",
       (x: PlanExecuteState) => x.next,
     );
 
     members.forEach((member) => {
-      workflow.addEdge(member, "planner");
+      workflow.addConditionalEdges(
+        member,
+        (x: PlanExecuteState) => x.next,
+      );
     });
 
-    workflow.addEdge(START, 'planner');
+    workflow.addEdge(START, 'Planner');
+    workflow.addEdge('Summarizer', END);
 
-    this.graph = workflow.compile();
+    this.memory = new MemorySaver();
 
+    this.graph = workflow.compile({ checkpointer: this.memory });
 
-    const config = { recursionLimit: 50 };
-    const inputs = {
-      input: "What is 2+2 and give me the latest news",
-    };
+    // const config = { recursionLimit: 50, callbacks: [this.langfuseHandler] };
+    // const inputs = {
+    //   input: "what is the latest news in hindi",
+    // };
 
     // const result = await this.graph.invoke(inputs, config);
     // console.log(result.response);
-    for await (const event of await this.graph.stream(inputs, config)) {
-      console.log(event);
-    }
+
+    // const inputs2 = {
+    //   input: "What is 2+2 and explain life",
+    // };
+    // const result2 = await this.graph.invoke(inputs2, config);
+    // console.log(result2.response);
+    // for await (const event of await this.graph.stream(inputs, config)) {
+    //   console.log(event);
+    // }
+  }
+
+  async queryText(input: string) {
+    const inputs = {
+      input
+    };
+    const config = {
+      configurable: {
+        thread_id: "default"
+      },
+      recursionLimit: 50,
+      callbacks: [this.langfuseHandler]
+    };
+    const result = await this.graph.invoke(inputs, config);
+    return { response: result.response };
 
   }
 }
