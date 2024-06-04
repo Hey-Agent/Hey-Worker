@@ -29,6 +29,7 @@ export default async function GeneralAgent(llm: any) {
 
     if (state.pastSteps.length == 0 && nextAgent == 'Summarizer') {
       return {
+        pastSteps: [],
         response: result.output,
         next: END,
       };

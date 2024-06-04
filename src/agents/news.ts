@@ -29,6 +29,7 @@ export default async function NewsAgent(llm: any) {
 
     if (state.pastSteps.length == 0 && nextAgent == 'Summarizer') {
       return {
+        pastSteps: [],
         response: result.output,
         next: END,
       };

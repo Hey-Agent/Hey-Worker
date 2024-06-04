@@ -156,7 +156,11 @@ export class AppService {
 
     this.memory = new MemorySaver();
 
-    this.graph = workflow.compile({ checkpointer: this.memory });
+    this.graph = workflow.compile(
+      // {
+      //   checkpointer: this.memory
+      // }
+    );
   }
 
   async queryText(input: string) {
@@ -165,8 +169,8 @@ export class AppService {
     };
     const config = {
       configurable: {
-        thread_id: 'default',
-        question: input
+        // thread_id: 'default',
+        input
       },
       recursionLimit: 50,
       callbacks: [this.langfuseHandler],
