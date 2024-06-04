@@ -3,7 +3,7 @@ import { StateGraphArgs } from "@langchain/langgraph";
 export interface PlanExecuteState {
     messages: BaseMessage[];
     input: string;
-    plan: string[];
+    plan: [string, string][];
     pastSteps: [string, string][];
     response?: string;
     next: string;
@@ -19,7 +19,8 @@ export const planExecuteState: StateGraphArgs<PlanExecuteState>["channels"] = {
         value: (left?: string, right?: string) => right ?? left ?? "",
     },
     plan: {
-        value: (x?: string[], y?: string[]) => y ?? x ?? [],
+        // value: (x: [string, string][], y: [string, string][]) => x.concat(y),
+        value: (x: [string, string][], y: [string, string][]) => y, // Replaces the old plan with the new plan
         default: () => [],
     },
     pastSteps: {

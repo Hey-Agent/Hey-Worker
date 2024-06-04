@@ -1,4 +1,4 @@
-import { HumanMessage } from '@langchain/core/messages';
+import { AIMessage, HumanMessage } from '@langchain/core/messages';
 import { RunnableConfig } from '@langchain/core/runnables';
 import { END } from '@langchain/langgraph';
 import calculatorTool from 'src/tools/general/calculator';
@@ -9,14 +9,20 @@ export default async function GeneralAgent(llm: any) {
   const generalAgent = await createAgent(
     llm,
     [calculatorTool],
-    'You are helpful agent. Following message is from a human. Solve the question with the tools available to you. Your response will be played over voice. Keep the response short and simple. Do not use markdown or LaTeX Syntax.',
+    `You are helpful agent. Following message is from a human. Solve the question with the tools available to you. Your response will be played over voice. Keep the response short and simple. Do not use markdown or LaTeX Syntax.
+    
+    Also attached are previous steps. use them if required`
   );
 
   // Config is needed for RunnableConfig
   async function generalNode(state: PlanExecuteState, config?: RunnableConfig) {
     const task = state.plan[0]['instructions'];
     const input = {
-      messages: [new HumanMessage(task)],
+      messages: [new HumanMessage(task), new AIMessage(state.pastSteps
+        .map(([step, result]) =>
+          JSON.stringify({ step: step, response: result }),
+        )
+        .join(',\n'))],
     };
     const result = await generalAgent.invoke(input, config);
 
@@ -27,7 +33,7 @@ export default async function GeneralAgent(llm: any) {
       nextAgent = newPlan[0]['agent'];
     }
 
-    if (state.pastSteps.length == 0 && nextAgent == 'Summarizer') {
+    if (state.pastSteps.length == 0 && newPlan.length == 0) {
       return {
         pastSteps: [],
         response: result.output,

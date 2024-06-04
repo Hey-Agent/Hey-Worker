@@ -27,7 +27,7 @@ export default async function NewsAgent(llm: any) {
       nextAgent = newPlan[0]['agent'];
     }
 
-    if (state.pastSteps.length == 0 && nextAgent == 'Summarizer') {
+    if (state.pastSteps.length == 0 && newPlan.length == 0) {
       return {
         pastSteps: [],
         response: result.output,

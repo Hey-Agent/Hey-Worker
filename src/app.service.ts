@@ -89,15 +89,16 @@ export class AppService {
       if (state.plan.length == 0) {
         plan = "";
       } else {
-        plan = "Your original plan was this: \n";
-        plan += state.plan.join('\n');
+        plan = "Here are the steps left in plan: \n";
+        plan += JSON.stringify(state.plan);
+        plan += "\n Update the instructions and assign the next agents carefully. Next agent should not be you / Planner."
       }
 
       let pastSteps: string;
       if (state.pastSteps.length == 0) {
         pastSteps = "";
       } else {
-        pastSteps = "You have currently done the follow steps:: \n";
+        pastSteps = "You have currently done the follow steps: \n";
         pastSteps += state.pastSteps
           .map(([step, result]) =>
             JSON.stringify({ step: step, response: result }),
@@ -112,6 +113,7 @@ export class AppService {
       });
       const toolCall = output[0];
 
+      console.log(output[0].args.plan);
       return {
         messages: [
           new HumanMessage({ content: output[0].args.plan[0].instructions }),
