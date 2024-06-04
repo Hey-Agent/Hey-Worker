@@ -30,7 +30,6 @@ export default async function SummarizerAgent(llm: any) {
       user: state.input,
       airesponse: AiMessages
     });
-    console.log(result);
     return {
       response: result.content,
       next: END,

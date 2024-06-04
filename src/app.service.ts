@@ -56,22 +56,18 @@ export class AppService {
     const members = this.getMembers();
 
     const plannerPrompt = ChatPromptTemplate.fromTemplate(`You are Planner. 
-    Here are other agents that can be assigned : Planner, ${members.join(', ')}
+    Here is a list of agents that can be assigned : [Planner, ${members.join(', ')}]
 
     For the given user input, come up with a simple step by step plan.
     Break down each task for relevant agents.
     Do not add any superfluous steps. 
     Make sure that each step has all the information needed - do not skip steps.
   
-    Set the Summarizer agent as last agent.
-
-    Your objective was this:
+    Your objective is to answer this:
     {input}
     
-    Your original plan was this (it can be empty if running for the first time):
     {plan}
     
-    You have currently done the follow steps:
     {pastSteps}
 
     Use tool 'planTool' to create the plan.
@@ -89,18 +85,33 @@ export class AppService {
     async function planStep(
       state: PlanExecuteState,
     ): Promise<Partial<PlanExecuteState>> {
-      const output = await planner.invoke({
-        input: state.input,
-        plan: state.plan.join('\n'),
-        pastSteps: state.pastSteps
+      let plan: string;
+      if (state.plan.length == 0) {
+        plan = "";
+      } else {
+        plan = "Your original plan was this: \n";
+        plan += state.plan.join('\n');
+      }
+
+      let pastSteps: string;
+      if (state.pastSteps.length == 0) {
+        pastSteps = "";
+      } else {
+        pastSteps = "You have currently done the follow steps:: \n";
+        pastSteps += state.pastSteps
           .map(([step, result]) =>
             JSON.stringify({ step: step, response: result }),
           )
-          .join(',\n'),
+          .join(',\n');
+      }
+
+      const output = await planner.invoke({
+        input: state.input,
+        plan: plan,
+        pastSteps: pastSteps,
       });
       const toolCall = output[0];
 
-      console.log(JSON.stringify(output[0]));
       return {
         messages: [
           new HumanMessage({ content: output[0].args.plan[0].instructions }),
@@ -155,6 +166,7 @@ export class AppService {
     const config = {
       configurable: {
         thread_id: 'default',
+        question: input
       },
       recursionLimit: 50,
       callbacks: [this.langfuseHandler],
