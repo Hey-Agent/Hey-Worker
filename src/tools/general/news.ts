@@ -8,7 +8,7 @@ const newsSchema = z.object({
 
 
 const newsTool = new DynamicStructuredTool({
-    name: "news",
+    name: "newsapi",
     description: "Can fetch latest news.",
     schema: newsSchema,
     func: async () => {
