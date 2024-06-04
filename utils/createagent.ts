@@ -9,13 +9,20 @@ async function createAgent(
     tools: any[],
     systemPrompt: string,
 ): Promise<Runnable> {
+
+    if (tools.length == 0) {
+        return ChatPromptTemplate.fromTemplate(systemPrompt).pipe(llm);
+    }
+
     // Each worker node will be given a name and some tools.
     const prompt = ChatPromptTemplate.fromMessages([
         ["system", systemPrompt],
         new MessagesPlaceholder("messages"),
         new MessagesPlaceholder("agent_scratchpad"),
     ]);
+
     const agent = createToolCallingAgent({ llm, tools, prompt });
+
     return new AgentExecutor({ agent, tools });
 };
 

@@ -5,11 +5,11 @@ class QueryText {
   input: string;
 }
 
-@Controller("/")
+@Controller('/')
 export class AppController {
-  constructor(private readonly appService: AppService) { }
+  constructor(private readonly appService: AppService) {}
 
-  @Post("/queryText")
+  @Post('/queryText')
   queryText(@Body() question: QueryText) {
     return this.appService.queryText(question.input);
   }
