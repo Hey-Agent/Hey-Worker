@@ -48,7 +48,7 @@ export class AppService {
   }
 
   getMembers(): string[] {
-    return ["General", "News"];
+    return ["GeneralAgentWithCalculator", "NewsAgent"];
   }
 
   async genSuperVisorChain() {
@@ -107,11 +107,11 @@ export class AppService {
     let t: RunnableLike<PlanExecuteState, unknown>;
     for (const member of members) {
       switch (member) {
-        case 'General':
+        case 'GeneralAgentWithCalculator':
           t = await GeneralAgent(this.llm);
           workflow.addNode(member, t);
           break;
-        case 'News':
+        case 'NewsAgent':
           t = await NewsAgent(this.llm);
           workflow.addNode(member, t);
           break;
