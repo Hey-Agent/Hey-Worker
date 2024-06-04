@@ -14,7 +14,7 @@ export default function generateLLM(
     let llm: BaseChatModel;
     switch (aiModel) {
         case 'ChatOpenAI':
-            llmOptions.model = 'gpt-4';
+            llmOptions.model = 'gpt-3.5-turbo-1106';
             llm = new ChatOpenAI(llmOptions);
             break;
         case 'AzureChatOpenAI':
