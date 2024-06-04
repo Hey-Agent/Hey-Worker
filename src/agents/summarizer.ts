@@ -31,6 +31,7 @@ export default async function SummarizerAgent(llm: any) {
       airesponse: AiMessages
     });
     return {
+      pastSteps: [],
       response: result.content,
       next: END,
     };
