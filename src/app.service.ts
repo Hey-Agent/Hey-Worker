@@ -1,4 +1,4 @@
-import { BaseMessageChunk, HumanMessage } from '@langchain/core/messages';
+import { HumanMessage } from '@langchain/core/messages';
 
 import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { RunnableLike } from '@langchain/core/runnables';
@@ -16,14 +16,12 @@ import NewsAgent from './agents/news';
 import calculatorTool from './tools/general/calculator';
 import newsTool from './tools/general/news';
 
-import { BaseLanguageModelCallOptions } from '@langchain/core/language_models/base';
-import { BaseChatModel } from '@langchain/core/language_models/chat_models';
 import { CallbackHandler } from 'langfuse-langchain';
 import SummarizerAgent from './agents/summarizer';
 
 @Injectable()
 export class AppService {
-  llm: BaseChatModel<BaseLanguageModelCallOptions, BaseMessageChunk>;
+  llm;
   memory: MemorySaver;
   graph: CompiledStateGraph<PlanExecuteState, unknown, string>;
   tools = [calculatorTool, newsTool];
